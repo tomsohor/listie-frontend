@@ -1,6 +1,8 @@
 .login{
     display: flex;
     position: relative;
+    justify-content: space-around;
+    align-items: center;
     width: rem(900);
     height: rem(400);
     top: rem(100);
@@ -8,22 +10,47 @@
     transform: translate(-50%, 0%);
     background-color: #373740;
     border-radius: rem(10);
-    flex-direction: column;
-    .tag{
-      
+    color: white;
+
+    &::before{
+        content: "Log in";
+        position: relative;
         display: flex;
         justify-content: center;
-        position: relative;
-        width: rem(90);
-        top:rem(-30);
-        left: rem(40);
+        align-items: center;
         color: white;
-        background-color: #000000;
-        padding: rem(20);
-        font-weight: bold;
-        border-radius: 10px;
+        width: rem(80);
+        height: rem(40);
+        border-radius: rem(10);
+        top: -50%;
+        left: 40px;
+        background-color: #000;
+        font-weight: bolder;
     }
-    .content{
+   h2{
+    width: rem(320);
+    transform: translateX(-30%);
+    padding: rem(30);
+    font-size: rem(30);
+   }
+   .form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: rem(350);
+    height: rem(200);
+    transform: translateX(-20%);
+    background-color: #000;
+    padding: rem(25);
+    border-radius: rem(10);
+    input{
+        outline: none;
+        height: rem(30);
+    }
+    .action{
         display: flex;
+        justify-content: space-between;
     }
+
+   }
 }
