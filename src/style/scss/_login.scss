@@ -1,0 +1,29 @@
+.login{
+    display: flex;
+    position: relative;
+    width: rem(900);
+    height: rem(400);
+    top: rem(100);
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-color: #373740;
+    border-radius: rem(10);
+    flex-direction: column;
+    .tag{
+      
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: rem(90);
+        top:rem(-30);
+        left: rem(40);
+        color: white;
+        background-color: #000000;
+        padding: rem(20);
+        font-weight: bold;
+        border-radius: 10px;
+    }
+    .content{
+        display: flex;
+    }
+}

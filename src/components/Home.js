@@ -1,4 +1,8 @@
 import React from 'react'
+
+import Search from './sub/Search';
+import CustomerType from './sub/CustomerType';
+
 import { MdOutlineOtherHouses } from "react-icons/md";
 import { GrPrevious } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
@@ -9,6 +13,11 @@ import coca from "../img/coca.jpg"
 
 function Home() {
     return ( 
+        <div>
+            
+            <div className="container all_margin">
+            <Search/>
+        <CustomerType/>
         <div className="main">
             <div className="gt">
                 <h2>Grand Total</h2>
@@ -146,6 +155,8 @@ function Home() {
                 </div>
                
             </div>
+        </div>
+        </div>
         </div>
      );
 }

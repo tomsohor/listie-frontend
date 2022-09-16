@@ -1,21 +1,22 @@
 import React from 'react'
-import Navbar from "./components/Navbar";
-import Search from './components/Search';
-import CustomerType from './components/CustomerType';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Navbar from './components/sub/Navbar';
 import Home from './components/Home';
+import Login from './components/Login';
 
 
 function App() {
   return (
+    <BrowserRouter>
+    <Navbar/>
     <div className="App">
-       <Navbar/>
-       <div className="container all_margin">
-        <Search/>
-        <CustomerType/>
-        <Home/>
-       </div>
-
-    </div>
+    <Routes>
+        <Route exact path='/' element={< Home />}></Route>
+        <Route exact path='/login' element={< Login />}></Route>
+      </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
