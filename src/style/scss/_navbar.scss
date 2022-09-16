@@ -1,0 +1,75 @@
+nav{
+    height: rem(100);
+    background-color: #5964E0;
+    border-radius: 0 0 0 rem(40);
+    @include breakpoint-down(medium) {
+        height: rem(80);
+      }
+.navbar{
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+    padding-bottom: rem(15);
+
+    @include breakpoint-down(medium) {
+        padding-bottom:0 ;
+      }
+    &__logo{
+        @include breakpoint-down(medium) {
+            transform: scale(0.9);
+        }
+        @include breakpoint-down(small) {
+            transform: scale(0.8);
+        }
+       a {
+         display: flex;
+         text-decoration: none;
+        span{
+            font-size: rem(33);
+            font-weight:900;
+            
+
+         }
+         .l{
+            color: #B5FFB8;
+        }
+        .i1{
+            color: #FAFF00;
+        }
+        .s{
+            color: #FF9090;
+        }
+        .t{
+            color: #B5FFB8;
+        }
+        .i2{
+            color: #FAFF0D;
+        }
+        .e{
+            color: #FA51F3;
+        }
+       }
+
+    }
+    &__shopname{
+        font-size: rem(16);
+        @include breakpoint-down(medium) {
+            transform: scale(0.8);
+        }
+        @include breakpoint-down(small) {
+            transform: scale(0.7);
+        }
+    }
+    &__logout{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: rem(22);
+        @include breakpoint-down(medium) {
+            transform: scale(0.8);
+        }
+    }
+}
+}

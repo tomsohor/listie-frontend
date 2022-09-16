@@ -1,0 +1,47 @@
+.ctype_container{
+    margin-top: rem(25);
+    display: flex;
+    justify-content: flex-end;
+    @include breakpoint-down(medium) {
+        margin-top: rem(45);
+    }
+   
+    .customertype{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: rem(360);
+        @include breakpoint-down(small) {
+           justify-content:flex-end;
+        }
+        span:nth-child(n+2){
+            font-size: rem(13);
+            font-weight: bold;
+            border-radius: rem(20);
+            cursor: pointer;
+            padding: rem(7) rem(18);
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        .text{
+            font-weight: bold;
+            @include breakpoint-down(small) {
+                display: none;
+            }
+        }
+        .retailer{
+            background-color: #4760B9;
+            color: white;
+            @include breakpoint-down(small) {
+                transform: scale(0.8);
+            }
+        }
+        .end-consumer{
+            background-color: #F2D5A3;
+            @include breakpoint-down(small) {
+                transform: scale(0.8);
+            }
+            
+        }
+
+    }
+}

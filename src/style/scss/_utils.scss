@@ -1,0 +1,49 @@
+// $bnav: #5964E0;
+// $vdb: hsl(207, 26%, 17%);
+// $vdbt: hsl(200, 15%, 8%);
+// $dg: hsl(0, 0%, 52%);
+// $vlg: hsl(0, 0%, 98%);
+// $w: hsl(0, 0%, 100%);
+
+// Typography
+// $hp: rem(14);
+// $dp: rem(16);
+
+// Text Weight
+// $l: 300;
+// $m: 600;
+// $h: 800;
+
+// Convert pixel to rem
+@function rem($pixel, $context: 16) {
+  @return calc($pixel/$context) * 1rem;
+}
+
+// Convert pixel to em
+@function em($pixel, $context: 16) {
+  @return calc($pixel/$context) * 1em;
+}
+
+//
+$breakpoint-up: (
+  "medium": em(468),
+  "large": em(1024),
+  "xlarge": em(1400),
+);
+$breakpoint-down: (
+  "small": em(467),
+  "medium": em(1023),
+  "large": em(1399),
+);
+
+@mixin breakpoint-up($size) {
+  @media (min-width: map-get($map: $breakpoint-up, $key: $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media (max-width: map-get($map: $breakpoint-down, $key: $size)) {
+    @content;
+  }
+}
