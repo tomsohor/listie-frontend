@@ -23,13 +23,13 @@ html {
     color: #191F2B;
   }
   .all_padding{
-    padding: 0 rem(150);
+    padding: 0 rem(120);
     @include breakpoint-down(medium) {
       padding: 0 rem(50);
     }
   }
   .all_margin{
-    margin: 0 rem(150);
+    margin: 0 rem(120);
     @include breakpoint-down(medium) {
       margin: 0 rem(50);
     }

@@ -46,10 +46,18 @@
     input{
         outline: none;
         height: rem(30);
+        &:last-child{
+            margin-bottom: rem(10);
+        }
     }
     .action{
         display: flex;
         justify-content: space-between;
+        align-items: center;
+
+        .loginbtn{
+            padding: rem(5)
+        }
     }
 
    }
