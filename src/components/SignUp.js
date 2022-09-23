@@ -1,32 +1,38 @@
 import React, { useState } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import api from "../api/api";
 
-function Login() {
-  
+function SignUp() {
+    const [email, setEmail] = useState("");
   const [uname, setUname] = useState("");
   const [pwd, setPwd] = useState("");
-  // const [user,setUser] = useOutletContext();
   const navigate = useNavigate();
 
-  const onLogin = async (e) => {
+  const onSignUp = async (e) => {
     e.preventDefault();
-    await api.postLogin({ username: uname, password: pwd }).then((res) => {
-      if (res.status === 200) {
-        // setUser(true);
-        navigate("/");
-      }
-    });
-  };
 
-  const toSignUp = async (e) => {
+    await api
+      .postSingUp({ username: uname, email: email, password: pwd })
+      .then((res) => {
+        if (res.status === 200){
+            navigate('/login')
+        }
+      });
+  };
+  const toLogin = async (e) => {
     e.preventDefault();
-    navigate("/signup");
+    navigate("/login");
   };
   return (
-    <div className="login">
+    <div className="signup">
       <h2>“ Listie, Your bestie to Reminisce your Products pricing! “ </h2>
       <form className="form">
+        <input
+          type="text"
+          className="email"
+          placeholder="email"
+          onChange={(event) => setEmail(event.target.value)}
+        />
         <input
           type="text"
           className="username"
@@ -41,14 +47,15 @@ function Login() {
         />
         <div className="action">
           <p>
-            Don’t have Account? <span onClick={toSignUp}> Create</span>
+            Already have Account? <span onClick={toLogin}>login</span>{" "}
           </p>
-          <button className="loginbtn" onClick={onLogin}>
-            Login
+          <button className="signupbtn" onClick={onSignUp}>
+            Sign Up
           </button>
         </div>
       </form>
     </div>
   );
 }
-export default Login;
+
+export default SignUp;
