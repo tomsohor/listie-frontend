@@ -10,8 +10,6 @@ instance.interceptors.response.use(
   error => {
       if (!error.response) {
           console.log('setServiceAvailable');
-      }else{
-        console.log(error.response.statusText)
       }
       
       return error.response;

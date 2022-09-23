@@ -1,4 +1,4 @@
-.login{
+.signup{
     display: flex;
     position: relative;
     justify-content: space-around;
@@ -13,7 +13,7 @@
     color: white;
 
     &::before{
-        content: "Log in";
+        content: "Sign Up";
         position: relative;
         display: flex;
         justify-content: center;
@@ -38,11 +38,12 @@
     flex-direction: column;
     justify-content: space-around;
     width: rem(350);
-    height: rem(200);
+    height: rem(230);
     transform: translateX(-20%);
     background-color: #000;
     padding: rem(25);
     border-radius: rem(10);
+    
     input{
         outline: none;
         height: rem(30);
@@ -66,8 +67,7 @@
             }
         }
 
-
-        .loginbtn{
+        .signupbtn{
             cursor: pointer;
             color: white;
             padding: rem(5);

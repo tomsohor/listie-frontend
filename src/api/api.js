@@ -1,18 +1,36 @@
 import instance from ".";
 
 const api = {
-    async postLogout() {
+
+    async checkAuthentication(){
         return await instance({
-            url:"/logout",
+            url:'/authenticate',
+            method:'Get'
+        })
+    },
+
+    async postSingUp(data) {
+        return await instance({
+            url:"/register",
             method: 'POST',
+            data: data
         });
 
     },
+
     async postLogin(data){
        return await instance({
             url:"/login",
             method: 'POST',
             data: data
+        });
+
+    },
+
+    async postLogout() {
+        return await instance({
+            url:"/logout",
+            method: 'POST',
         });
 
     },

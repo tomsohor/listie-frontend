@@ -8,11 +8,9 @@ import { IoDuplicateOutline } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import coca from "../img/coca.jpg"
 import { useEffect } from 'react';
-import { useNavigate, useNavigation } from 'react-router-dom';
 
 function Home() {
     const [data,setData]=useState();
-    const navigate = useNavigate()
     
     useEffect(()=>{
        const fetchData = async()=>{
