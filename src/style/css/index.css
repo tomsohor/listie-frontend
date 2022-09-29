@@ -2,7 +2,6 @@
 html {
   box-sizing: border-box;
   font-size: 100%;
-  font-family: "Raleway", sans-serif;
 }
 
 *,
@@ -11,6 +10,7 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+  font-family: "Raleway", sans-serif;
 }
 
 body {
@@ -39,6 +39,16 @@ body {
   .all_margin {
     margin: 0 3.125rem;
   }
+}
+
+input {
+  outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 nav {
@@ -74,30 +84,31 @@ nav .navbar {
     transform: scale(0.8);
   }
 }
-nav .navbar__logo a {
+nav .navbar__logo .logoContainer {
   display: flex;
   text-decoration: none;
+  cursor: pointer;
 }
-nav .navbar__logo a span {
+nav .navbar__logo .logoContainer span {
   font-size: 2.0625rem;
   font-weight: 900;
 }
-nav .navbar__logo a .l {
+nav .navbar__logo .logoContainer .l {
   color: #B5FFB8;
 }
-nav .navbar__logo a .i1 {
+nav .navbar__logo .logoContainer .i1 {
   color: #FAFF00;
 }
-nav .navbar__logo a .s {
+nav .navbar__logo .logoContainer .s {
   color: #FF9090;
 }
-nav .navbar__logo a .t {
+nav .navbar__logo .logoContainer .t {
   color: #B5FFB8;
 }
-nav .navbar__logo a .i2 {
+nav .navbar__logo .logoContainer .i2 {
   color: #FAFF0D;
 }
-nav .navbar__logo a .e {
+nav .navbar__logo .logoContainer .e {
   color: #FA51F3;
 }
 nav .navbar__shopname {
@@ -342,6 +353,7 @@ nav .navbar__logout {
   padding: 0.9375rem;
   padding-top: 0;
   border-radius: 10px;
+  position: relative;
   -webkit-animation: scrolling 5s linear infinite;
           animation: scrolling 5s linear infinite;
 }
@@ -372,13 +384,39 @@ nav .navbar__logout {
 .main .itemtype .items .item .tag.retailer {
   background-color: #4760B9;
 }
-.main .itemtype .items .item .tag.end-user {
+.main .itemtype .items .item .tag.end-consumer {
   background-color: #F2D5A3;
 }
 .main .itemtype .items .item .name {
+  display: inline-block;
   text-decoration: none;
+  max-width: 5rem;
   color: white;
   margin-bottom: 0.625rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.main .itemtype .items .item .name:hover {
+  color: #2B79C1;
+}
+.main .itemtype .items .item .name:hover > .nametooltip {
+  visibility: visible;
+}
+.main .itemtype .items .item .name .nametooltip {
+  visibility: hidden;
+  width: auto;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 3px 10px;
+  font-size: small;
+  border-radius: 5px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 999999;
+  top: -0.1875rem;
+  left: 1.5625rem;
 }
 .main .itemtype .items .item .img {
   width: 100%;
@@ -566,23 +604,188 @@ nav .navbar__logout {
   position: relative;
   display: flex;
   justify-content: center;
+  margin-top: 6.25rem;
+  margin-bottom: 6.25rem;
 }
 .additem .content {
   display: flex;
   flex-direction: column;
+  width: 37.5rem;
+  height: auto;
   background-color: white;
-  border: solid 1px;
-  padding: 0.625rem;
+  padding: 1.875rem;
+  border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 .additem .content .action {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1.875rem;
+}
+.additem .content .action .backbtn {
+  cursor: pointer;
+  color: #5964E0;
+  font-size: larger;
+}
+.additem .content .action .savebtn {
+  cursor: pointer;
+  background-color: #5964E0;
+  padding: 0.3125rem 0.625rem;
+  color: white;
+  border-radius: 5px;
 }
 .additem .content .iteminfo {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+.additem .content .iteminfo .uploadphoto {
+  min-width: 7.5rem;
+  height: 7.5rem;
+  background-color: gray;
+  border-radius: 5px;
+  margin-right: 1.875rem;
 }
 .additem .content .iteminfo .info {
+  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+.additem .content .iteminfo .info > * {
+  height: 1.75rem;
+  background-color: #373740;
+  border-radius: 5px;
+  color: white;
+  padding-left: 0.625rem;
+}
+.additem .content .iteminfo .info > :first-child::-moz-placeholder {
+  color: white;
+}
+.additem .content .iteminfo .info > :first-child:-ms-input-placeholder {
+  color: white;
+}
+.additem .content .iteminfo .info > :first-child::placeholder {
+  color: white;
+}
+.additem .content .table {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.additem .content .table .header {
+  display: flex;
+  justify-content: space-between;
+}
+.additem .content .table .header .addbtn {
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+.additem .content .table table {
+  border-spacing: 0 10px;
+}
+.additem .content .table td:not(:last-child) > * {
+  width: 10rem;
+  background-color: #373740;
+  border-radius: 5px;
+  color: white;
+  padding: 0.125rem 0.625rem;
+  text-align: center;
+}
+.additem .content .table td:last-child > * {
+  cursor: pointer;
+  font-size: 1.25rem;
+  margin-left: 1.25rem;
+  padding-top: 0.125rem;
+  color: rgb(230, 134, 134);
+}
+.additem .content .table tr > :nth-child(3) {
+  text-align: end;
+}
+.additem .content .table tr > :nth-child(3) > * {
+  text-align: start;
+}
+.additem .content .table tr > :first-child {
+  text-align: start;
+}
+
+.deleteitem {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 12.5rem;
+  margin-bottom: 6.25rem;
+}
+.deleteitem .content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 25rem;
+  height: auto;
+  background-color: white;
+  padding: 1.875rem;
+  border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.deleteitem .content .action {
+  display: flex;
+  width: 100%;
+  margin-top: 1.875rem;
+  justify-content: flex-end;
+  margin-right: 3.125rem;
+}
+.deleteitem .content .action > * {
+  padding: 0.3125rem 0.625rem;
+  color: white;
+  border-radius: 5px;
+}
+.deleteitem .content .action .no {
+  background-color: rgb(230, 134, 134);
+  cursor: pointer;
+}
+.deleteitem .content .action .yes {
+  background-color: #5964E0;
+  margin-left: 1.25rem;
+  cursor: pointer;
+}
+
+.dupitem {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 12.5rem;
+  margin-bottom: 6.25rem;
+}
+.dupitem .content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 25rem;
+  height: auto;
+  background-color: white;
+  padding: 1.875rem;
+  border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.dupitem .content .action {
+  display: flex;
+  width: 100%;
+  margin-top: 1.875rem;
+  justify-content: flex-end;
+  margin-right: 3.125rem;
+}
+.dupitem .content .action > * {
+  padding: 0.3125rem 0.625rem;
+  color: white;
+  border-radius: 5px;
+}
+.dupitem .content .action .no {
+  background-color: rgb(230, 134, 134);
+  cursor: pointer;
+}
+.dupitem .content .action .yes {
+  background-color: #5964E0;
+  margin-left: 1.25rem;
+  cursor: pointer;
 }

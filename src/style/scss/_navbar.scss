@@ -23,9 +23,10 @@ nav{
         @include breakpoint-down(small) {
             transform: scale(0.8);
         }
-       a {
+        .logoContainer {
          display: flex;
          text-decoration: none;
+         cursor: pointer;
         span{
             font-size: rem(33);
             font-weight:900;

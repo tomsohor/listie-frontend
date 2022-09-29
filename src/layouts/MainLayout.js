@@ -8,6 +8,7 @@ import Logo from "../components/sub/Logo";
 function MainLayout() {
   const [user, setUser] = useState(false);
   const navigate = useNavigate();
+
   const onLogout = async () => {
     await api.postLogout().then(() => {
       navigate("/login");
@@ -35,7 +36,7 @@ function MainLayout() {
         <nav>
           <div className="navbar all_padding">
             <div className="navbar__logo">
-              <Logo />
+              <Logo/>
             </div>
             <div className="navbar__shopname">
               <h2>Shop Name</h2>

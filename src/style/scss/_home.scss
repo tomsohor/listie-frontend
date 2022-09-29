@@ -98,7 +98,7 @@
                 padding: rem(15);
                 padding-top: 0;
                 border-radius: 10px;
-
+                position: relative;
                 animation: scrolling 5s linear infinite;
 
                 @keyframes scrolling {
@@ -122,17 +122,46 @@
                     &.retailer{
                         background-color: #4760B9;
                     }
-                    &.end-user{
+                    &.end-consumer{
                         background-color: #F2D5A3;
                     }
                     
                 }
 
                 .name{
+                    display:inline-block;
                     text-decoration: none;
+                    max-width: rem(80);
                     color: white;
                     margin-bottom: rem(10);
+                    text-overflow: ellipsis;
+                    overflow: hidden; 
+                    white-space: nowrap;
+                    &:hover{
+                        color: #2B79C1;
+                    }
+                    &:hover > .nametooltip{
+                        visibility: visible;
+                    }
+                    .nametooltip{
+                        visibility: hidden;
+                        width: auto;
+                        background-color: black;
+                        color: #fff;
+                        text-align: center;
+                        padding: 3px 10px;
+                        font-size: small;
+                        border-radius: 5px;
+                        /* Position the tooltip text - see examples below! */
+                        position: absolute;
+                        z-index: 999999;
+                        top: rem(-3);
+                        left: rem(25);
+                       
+                    }
                 }
+                
+
 
                 .img{
                     width: 100%;

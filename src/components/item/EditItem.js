@@ -1,24 +1,21 @@
 import React from "react";
 import { BiArrowBack } from "react-icons/bi";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import { AiFillPlusCircle, AiFillCloseCircle } from "react-icons/ai";
 import { useState } from "react";
 import api from "../../api/api";
 
-function AddItem() {
+function EditItem() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [user, setUser] = useOutletContext();
-  const [itemname, setItemName] = useState("");
-  const [itemtype, setItemType] = useState("");
-  const [customertype, setCustomerType] = useState("");
+  const {item} = location.state;
+  const [itemname, setItemName] = useState(item.itemname);
+  const [itemtype, setItemType] = useState(item.itemtype);
+  const [customertype, setCustomerType] = useState(item.customertype);
+  
 
-  const [prices, setPrices] = useState([
-    {
-      soldunit: '',
-      unitprice: 0,
-      ccy: "USD",
-    },
-  ]);
+  const [prices, setPrices] = useState(item.prices);
 
   const onChangePrice = (value, index, type) => {
     const k = [...prices];
@@ -42,7 +39,7 @@ function AddItem() {
   };
 
   const toBack = () =>{
-    navigate('/');
+    navigate('/item/details',{state:{item}});
   }
   const onSave = async() => {
     const item = {
@@ -119,7 +116,7 @@ function AddItem() {
                 </tr>
               </thead>
               <tbody>
-                {prices.map((price, index) => (
+                 {item.prices.map((price, index) => (
                   <tr key={`${index}-price`}>
                     <td>
                       <input
@@ -161,7 +158,7 @@ function AddItem() {
                       )}
                     </td>
                   </tr>
-                ))}
+                ))} 
               </tbody>
             </table>
           </div>
@@ -170,4 +167,4 @@ function AddItem() {
     );
 }
 
-export default AddItem;
+export default EditItem;

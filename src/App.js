@@ -7,6 +7,11 @@ import Home from "./components/Home";
 import AddItem from "./components/item/AddItem";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import DeleteItem from "./components/item/DeleteItem";
+import DupItem from "./components/item/DupteItem";
+import ItemDetails from "./components/item/ItemDetails";
+import EditItem from "./components/item/EditItem";
+
 
 function App() {
   return (
@@ -15,6 +20,10 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/item/add" element={<AddItem />} />
+          <Route path="/item/delete" element={<DeleteItem />} />
+          <Route path="/item/duplicate" element={<DupItem />} />
+          <Route path="/item/details" element={<ItemDetails />} />
+          <Route path="/item/edit" element={<EditItem />} />
         </Route>
         <Route element={<GuestLayout />}>
           <Route path="login" element={<Login />} />

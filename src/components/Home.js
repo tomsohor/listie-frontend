@@ -8,10 +8,30 @@ import { IoDuplicateOutline } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import coca from "../img/coca.jpg"
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
     const [data,setData]=useState();
-    
+    const navigate = useNavigate();
+    const toDelete = (id) =>{
+        navigate('/item/delete', {state:{id}})
+    }
+
+    const toDuplicate = (item) =>{
+        navigate('/item/duplicate',{state:{item}})
+        
+    }
+
+    const getDetails = async(id) =>{
+        await api.getItemDetails(id).then(res=>{
+            if(res.status===200){
+                const item = res.data.item;
+                item.prices = res.data.prices
+                navigate('/item/details',{state:{item}})
+            }
+        })
+    }
+   
     useEffect(()=>{
        const fetchData = async()=>{
         const dataset = await api.getAllData();
@@ -45,9 +65,11 @@ function Home() {
                         <div className="item" key={item.id}>
                             <span className={"tag "+item.customertype}></span>
                             
-                            <a href='#' className="name">
-                                {item.itemname}
-                            </a>
+                            <span className="name">
+                                <span className='nametooltip'>{item.itemname}</span>
+                                <span onClick={() => getDetails(item.id)}>{item.itemname}</span> 
+                                
+                            </span>
                             <div className='img'>
                             <img 
                             // src={"../image/coca.jpg" }
@@ -56,9 +78,8 @@ function Home() {
                             </div>
                             
                             <div className="action">
-                                <IoDuplicateOutline/>
-                                
-                                <RiDeleteBin6Line/>
+                                <IoDuplicateOutline onClick={() => toDuplicate(item)}/>
+                                <RiDeleteBin6Line onClick={()=>toDelete(item.id)}/>
                             </div>
                         </div>
                         

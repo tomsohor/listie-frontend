@@ -2,23 +2,106 @@
     position: relative;
     display: flex;
     justify-content: center;
+    margin-top: rem(100);
+    margin-bottom: rem(100);
     .content{
         display: flex;
         flex-direction: column;
+        width: rem(600);
+        height: auto;
         background-color: white;
-        border: solid 1px;
-        padding: rem(10);
+        padding: rem(30);
+        border-radius: 10px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
         .action{
             display: flex;
             justify-content: space-between;
+            margin-bottom: rem(30);
+            .backbtn{
+                cursor: pointer;
+                color: #5964E0;
+                font-size: larger;
+            }
+            .savebtn{
+                cursor: pointer;
+                background-color: #5964E0;
+                padding:rem(5) rem(10);
+                color: white;
+                border-radius: 5px;
+                // font-weight: bold;
+            }
         }
 
         .iteminfo{
             display: flex;
             justify-content: space-between;
+            margin-bottom: rem(20);
+            .uploadphoto{
+                min-width: rem(120);
+                height: rem(120);
+                background-color: gray;
+                border-radius: 5px;
+                margin-right: rem(30);
+            }
             .info{
+                position: relative;
                 display: flex;
                 flex-direction: column;
+                justify-content: space-between;
+                width: 100%;
+                
+                & > *{
+                    height: rem(28);
+                    background-color: #373740;
+                    border-radius: 5px;
+                    color: white;
+                    padding-left: rem(10);
+                }
+                & > :first-child::placeholder{
+                    color: white;}
+            }
+        }
+        
+        .table{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            .header{
+                display: flex;
+                justify-content: space-between;
+                .addbtn{
+                    cursor: pointer;
+                    font-size: rem(20);
+                }
+
+            }
+            table{
+                border-spacing: 0 10px;
+            }
+            td:not(:last-child) > *{
+                    width: rem(160);
+                    background-color: #373740;
+                    border-radius: 5px;
+                    color: white;
+                    padding: rem(2) rem(10);
+                    text-align: center;
+            
+            }
+           td:last-child > *{
+            cursor: pointer;
+            font-size: rem(20);
+            margin-left: rem(20);
+            padding-top: rem(2);
+            color: rgb(230, 134, 134);
+           }
+            tr > :nth-child(3){
+                text-align: end;
+                & > *{
+                    text-align: start;
+                }
+            }
+            tr > :first-child{
+                text-align: start;
             }
         }
         
