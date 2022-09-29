@@ -11,16 +11,20 @@ function AddItem() {
   const [itemname, setItemName] = useState("");
   const [itemtype, setItemType] = useState("");
   const [customertype, setCustomerType] = useState("");
-  const [selectedFile, setSelectedFile] = useState();
-	const [isFilePicked, setIsFilePicked] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
 
-	const changeHandler = (event) => {
-		setSelectedFile(event.target.files[0]);
-	};
+  const [image, setImage] = useState(null);
+
+  const changeHandler = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      setImage(URL.createObjectURL(event.target.files[0]));
+      setSelectedFile(event.target.files[0]);
+    }
+  };
 
   const [prices, setPrices] = useState([
     {
-      soldunit: '',
+      soldunit: "",
       unitprice: 0,
       ccy: "USD",
     },
@@ -35,7 +39,7 @@ function AddItem() {
     setPrices([
       ...prices,
       {
-        soldunit: '',
+        soldunit: "",
         unitprice: 0,
         ccy: "USD",
       },
@@ -47,32 +51,43 @@ function AddItem() {
     setPrices(k);
   };
 
-  const toBack = () =>{
-    navigate('/');
-  }
-  const onSave = async() => {
+  const toBack = () => {
+    navigate("/");
+  };
+  const onSave = async () => {
     const item = {
       itemname,
       itemtype,
       customertype,
-      prices: prices
-    }
-    await api.addItem(item, selectedFile).then(res=>{
-      if(res.status === 200){
-        navigate('/')
+      prices: prices,
+    };
+
+    await api.addItem(item, selectedFile).then((res) => {
+      if (res.status === 200) {
+        navigate("/");
       }
     });
-  }
+  };
   if (user)
     return (
       <div className="additem all_margin">
         <div className="content">
           <div className="action">
-            <BiArrowBack onClick={toBack} className="backbtn"/>
-            <span onClick={onSave} className="savebtn">Save</span>
+            <BiArrowBack onClick={toBack} className="backbtn" />
+            <span onClick={onSave} className="savebtn">
+              Save
+            </span>
           </div>
           <div className="iteminfo">
-            <label className="uploadphoto"><input style={{display: "none"}} type="file" onChange={changeHandler} ></input></label>
+            
+              <label className="uploadphoto">
+                {image && <img src={image} style={{ maxWidth: '100%'}} />}
+                <input
+                  style={{ display: "none" }}
+                  type="file"
+                  onChange={changeHandler}
+                ></input>
+              </label>
             <div className="info">
               <input
                 type="text"
@@ -105,8 +120,8 @@ function AddItem() {
                 <option value="" disabled selected hidden>
                   Customer Type
                 </option>
-                <option value="retailer">Retailer</option>
-                <option value="end-consumer">End-Consumer</option>
+                <option value="Retailer">Retailer</option>
+                <option value="End-consumer">End-Consumer</option>
               </select>
             </div>
           </div>

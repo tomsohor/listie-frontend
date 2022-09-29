@@ -16,8 +16,17 @@ function EditItem() {
   const [customertype, setCustomerType] = useState(item.customertype);
   
 
-  const [prices, setPrices] = useState(item.prices);
+  const [prices, setPrices] = useState(item.prices || []);
+  const [selectedFile, setSelectedFile] = useState(null);
 
+  const [image, setImage] = useState(null);
+
+  const changeHandler = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      setImage(URL.createObjectURL(event.target.files[0]));
+      setSelectedFile(event.target.files[0]);
+    }
+  };
   const onChangePrice = (value, index, type) => {
     const k = [...prices];
     k[index][type] = value;
@@ -52,7 +61,7 @@ function EditItem() {
       customertype,
       prices: prices
     }
-    await api.editItem(payload).then(res=>{
+    await api.editItem(payload, selectedFile).then(res=>{
       if(res.status === 200){
         navigate('/')
       }
@@ -67,7 +76,16 @@ function EditItem() {
             <button className="savebtn" type="submit">Save</button>
           </div>
           <div className="iteminfo">
-            <label className="uploadphoto"><input style={{display: "none"}} type="file"></input></label>
+          <label className="uploadphoto">
+                {image && <img src={image} style={{ maxWidth: '100%'}} />}
+
+                {(!image && item.pic) && <img src={`http://localhost:4000/uploads/${item.pic}`} style={{ maxWidth: '100%'}} />}
+                <input
+                  style={{ display: "none" }}
+                  type="file"
+                  onChange={changeHandler}
+                ></input>
+              </label>
             <div className="info">
               <input
                 type="text"

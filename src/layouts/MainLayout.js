@@ -4,6 +4,7 @@ import { IoMdLogOut } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import api from "../api/api";
 import Logo from "../components/sub/Logo";
+import { BiEdit } from "react-icons/bi";
 
 function MainLayout() {
   const [user, setUser] = useState(false);
@@ -40,6 +41,7 @@ function MainLayout() {
             </div>
             <div className="navbar__shopname">
               <h2>Shop Name</h2>
+              <BiEdit/>
             </div>
             <div className="navbar__logout">
               <IoMdLogOut onClick={onLogout} />

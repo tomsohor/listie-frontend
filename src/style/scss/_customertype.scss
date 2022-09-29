@@ -31,7 +31,7 @@
                 transform: scale(0.8);
             }
         }
-        .retailer{
+        .Retailer{
             background-color: #4760B9;
             color: white;
             margin-right: rem(10);
@@ -39,7 +39,7 @@
                 transform: scale(0.8);
             }
         }
-        .end-consumer{
+        .End-consumer{
             background-color: #F2D5A3;
             @include breakpoint-down(small) {
                 transform: scale(0.8);

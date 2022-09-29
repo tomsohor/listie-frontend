@@ -8,7 +8,7 @@ function ItemDetails() {
   const [user] = useOutletContext();
   const location = useLocation();
   const {item} = location.state;
-
+  console.log(item)
   const toBack = () =>{
     navigate('/');
   }
@@ -26,7 +26,9 @@ function ItemDetails() {
             <span className="savebtn" onClick={toEdit}>Edit</span>
           </div>
           <div className="iteminfo">
-            <label className="uploadphoto">dfs</label>
+          <label className="uploadphoto">
+                {(item.pic) && <img src={`http://localhost:4000/uploads/${item.pic}`} style={{ maxWidth: '100%'}} />}
+              </label>
             <div className="info">
               <span className="name" >{item.itemname}</span>
               <span className="name">{item.itemtype}</span>

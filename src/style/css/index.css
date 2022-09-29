@@ -113,6 +113,7 @@ nav .navbar__logo .logoContainer .e {
 }
 nav .navbar__shopname {
   font-size: 1rem;
+  display: flex;
 }
 @media (max-width: 63.9375em) {
   nav .navbar__shopname {
@@ -123,6 +124,11 @@ nav .navbar__shopname {
   nav .navbar__shopname {
     transform: scale(0.7);
   }
+}
+nav .navbar__shopname > :last-child {
+  margin-left: 0.625rem;
+  cursor: pointer;
+  font-size: 1.125rem;
 }
 nav .navbar__logout {
   display: flex;
@@ -236,21 +242,21 @@ nav .navbar__logout {
     transform: scale(0.8);
   }
 }
-.ctype_container .customertype .retailer {
+.ctype_container .customertype .Retailer {
   background-color: #4760B9;
   color: white;
   margin-right: 0.625rem;
 }
 @media (max-width: 31.1875em) {
-  .ctype_container .customertype .retailer {
+  .ctype_container .customertype .Retailer {
     transform: scale(0.8);
   }
 }
-.ctype_container .customertype .end-consumer {
+.ctype_container .customertype .End-consumer {
   background-color: #F2D5A3;
 }
 @media (max-width: 31.1875em) {
-  .ctype_container .customertype .end-consumer {
+  .ctype_container .customertype .End-consumer {
     transform: scale(0.8);
   }
 }
@@ -632,8 +638,8 @@ nav .navbar__logout {
   margin-bottom: 1.25rem;
 }
 .additem .content .iteminfo .uploadphoto {
-  min-width: 7.5rem;
   height: 7.5rem;
+  width: 7.5rem;
   background-color: gray;
   border-radius: 5px;
   margin-right: 1.875rem;

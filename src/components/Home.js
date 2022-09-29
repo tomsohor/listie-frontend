@@ -62,7 +62,7 @@ function Home() {
 
   const getAllData = async () => {
     const dataset = await api.getAllData();
-    if (dataset.data) {
+    if (dataset.data && dataset.data instanceof Array) {
       const tmp = getDataGroupByType(dataset.data);
 
       setData(dataset.data);
@@ -134,7 +134,7 @@ function Home() {
                       <div className="img">
                         <img
                           // src={"../image/coca.jpg" }
-                          src={coca}
+                          src={`http://localhost:4000/uploads/${item.pic}`}
                           alt=""
                         />
                       </div>

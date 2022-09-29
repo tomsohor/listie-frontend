@@ -56,11 +56,19 @@ nav{
     }
     &__shopname{
         font-size: rem(16);
+        display: flex;
+
         @include breakpoint-down(medium) {
             transform: scale(0.8);
         }
         @include breakpoint-down(small) {
             transform: scale(0.7);
+        }
+
+        & > :last-child{
+            margin-left: rem(10);
+            cursor: pointer;
+            font-size: rem(18);
         }
     }
     &__logout{

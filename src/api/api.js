@@ -38,25 +38,41 @@ const api = {
     });
   },
 
-  async addItem(data, file) {
+  async addItem(item, file) {
     const formData = new FormData();
     formData.append("file", file);
+    formData.append("prices", item.prices)
+    formData.append("itemname", item.itemname)
+    formData.append("itemtype", item.itemtype)
+    formData.append("customertype", item.customertype)
+
     const headers = {
       "content-type": "multipart/form-data",
     };
 
     return await instance({
-      url: "/uploads",
+      url: "/item",
       method: "Post",
       data: formData,
       headers,
     });
   },
-  async editItem(data) {
+  async editItem(item, file) {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("id", item.id);
+    formData.append("prices", JSON.stringify(item.prices))
+    formData.append("itemname", item.itemname)
+    formData.append("itemtype", item.itemtype)
+    formData.append("customertype", item.customertype)
+    const headers = {
+      "content-type": "multipart/form-data",
+    };
     return await instance({
       url: "/item",
       method: "Patch",
-      data: data,
+      data: formData,
+      headers,
     });
   },
 
