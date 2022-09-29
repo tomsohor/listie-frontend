@@ -11,6 +11,12 @@ function AddItem() {
   const [itemname, setItemName] = useState("");
   const [itemtype, setItemType] = useState("");
   const [customertype, setCustomerType] = useState("");
+  const [selectedFile, setSelectedFile] = useState();
+	const [isFilePicked, setIsFilePicked] = useState(false);
+
+	const changeHandler = (event) => {
+		setSelectedFile(event.target.files[0]);
+	};
 
   const [prices, setPrices] = useState([
     {
@@ -51,7 +57,7 @@ function AddItem() {
       customertype,
       prices: prices
     }
-    await api.addItem(item).then(res=>{
+    await api.addItem(item, selectedFile).then(res=>{
       if(res.status === 200){
         navigate('/')
       }
@@ -66,7 +72,7 @@ function AddItem() {
             <span onClick={onSave} className="savebtn">Save</span>
           </div>
           <div className="iteminfo">
-            <label className="uploadphoto"><input style={{display: "none"}} type="file"></input></label>
+            <label className="uploadphoto"><input style={{display: "none"}} type="file" onChange={changeHandler} ></input></label>
             <div className="info">
               <input
                 type="text"

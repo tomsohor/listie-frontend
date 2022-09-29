@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { BiArrowBack } from "react-icons/bi";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import { AiFillPlusCircle, AiFillCloseCircle } from "react-icons/ai";
@@ -26,6 +27,7 @@ function EditItem() {
     setPrices([
       ...prices,
       {
+        id: uuidv4(),
         soldunit: '',
         unitprice: 0,
         ccy: "USD",
@@ -41,14 +43,16 @@ function EditItem() {
   const toBack = () =>{
     navigate('/item/details',{state:{item}});
   }
-  const onSave = async() => {
-    const item = {
+  const onSave = async (e) => {
+    e.preventDefault()
+    const payload = {
+      id: item.id,
       itemname,
       itemtype,
       customertype,
       prices: prices
     }
-    await api.addItem(item).then(res=>{
+    await api.editItem(payload).then(res=>{
       if(res.status === 200){
         navigate('/')
       }
@@ -57,10 +61,10 @@ function EditItem() {
   if (user)
     return (
       <div className="additem all_margin">
-        <div className="content">
+        <form className="content" onSubmit={onSave}>
           <div className="action">
             <BiArrowBack onClick={toBack} className="backbtn"/>
-            <span onClick={onSave} className="savebtn">Save</span>
+            <button className="savebtn" type="submit">Save</button>
           </div>
           <div className="iteminfo">
             <label className="uploadphoto"><input style={{display: "none"}} type="file"></input></label>
@@ -116,12 +120,13 @@ function EditItem() {
                 </tr>
               </thead>
               <tbody>
-                 {item.prices.map((price, index) => (
+                 {prices.map((price, index) => (
                   <tr key={`${index}-price`}>
                     <td>
                       <input
                         type="text"
                         value={price.soldunit}
+                        required
                         onChange={(e) =>
                           onChangePrice(e.target.value, index, "soldunit")
                         }
@@ -162,7 +167,7 @@ function EditItem() {
               </tbody>
             </table>
           </div>
-        </div>
+        </form>
       </div>
     );
 }

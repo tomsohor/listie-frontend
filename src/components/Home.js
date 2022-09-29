@@ -10,12 +10,12 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const [data, setData] = useState();
-  const [k, setK] = useState();
+  const [data, setData] = useState([]);
+  const [k, setK] = useState([]);
 
   const navigate = useNavigate();
   //filter by customer type
-  const [filter, setFilter] = useState({ state: false, type: "" });
+  const [filterType, setFilterType] = useState("x");
   const toDelete = (id) => {
     navigate("/item/delete", { state: { id } });
   };
@@ -36,50 +36,38 @@ function Home() {
 
   const onCustomerType = async (type) => {
     if (type === "x") {
-      setFilter((f) => ({
-        ...f,
-        state: false,
-        type: "",
-      }));
+      setFilterType("x");
       await getAllData();
-    }
-    if (type === "retailer") {
-      setFilter((f) => ({
-        ...f,
-        state: true,
-        type: "retailer",
-      }));
-      const retailers = data.filter((item) => item.customertype === "retailer");
-      setData(retailers);
-    }
-    if (type === "end-consumer") {
-      setFilter((f) => ({
-        ...f,
-        state: true,
-        type: "end-consumer",
-      }));
-      const endUser = data.filter(
-        (item) => item.customertype === "end-consumer"
-      );
-      setData(endUser);
+    } else {
+      setFilterType(type);
+      const filtered = {};
+      Object.keys(k).forEach((x) => {
+        filtered[x] = k[x].filter((y) => y.customertype === type);
+      });
+      setK(filtered);
     }
   };
 
-  const getAllData = async () => {
-    const dataset = await api.getAllData();
-
+  const getDataGroupByType = (data) => {
     const tmp = {};
-    dataset.data.forEach((item) => {
+    data.forEach((item) => {
       if (!tmp[item.itemtype]) {
         tmp[item.itemtype] = [item];
       } else {
         tmp[item.itemtype].push(item);
       }
     });
+    return tmp;
+  };
 
-    setData(dataset.data);
-    setK(tmp);
-    console.log(tmp);
+  const getAllData = async () => {
+    const dataset = await api.getAllData();
+    if (dataset.data) {
+      const tmp = getDataGroupByType(dataset.data);
+
+      setData(dataset.data);
+      setK(tmp);
+    }
   };
 
   useEffect(() => {
@@ -92,12 +80,12 @@ function Home() {
           <Search />
           <div className="ctype_container">
             <div className="customertype">
-              {filter.state === true && (
+              {filterType !== "x" && (
                 <span className="x" onClick={() => onCustomerType("x")}>
                   X
                 </span>
               )}
-              {filter.type !== "end-consumer" && (
+              {filterType !== "end-consumer" && (
                 <span
                   className="retailer"
                   onClick={() => onCustomerType("retailer")}
@@ -106,7 +94,7 @@ function Home() {
                 </span>
               )}
 
-              {filter.type !== "retailer" && (
+              {filterType !== "retailer" && (
                 <span
                   className="end-consumer"
                   onClick={() => onCustomerType("end-consumer")}
@@ -123,7 +111,7 @@ function Home() {
               <p>{data.length} items</p>
             </div>
 
-            {Object.keys(k).map(itemtype => (
+            {Object.keys(k).map((itemtype) => (
               <div className="itemtype">
                 <div className="typename">
                   <div className="name">
