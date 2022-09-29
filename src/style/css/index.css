@@ -295,6 +295,7 @@ nav .navbar__logout {
 .main .itemtype {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1.875rem;
 }
 .main .itemtype .typename {
   display: flex;
@@ -339,7 +340,6 @@ nav .navbar__logout {
 }
 .main .itemtype .items {
   display: flex;
-  border: solid 1px;
   overflow-x: hidden;
   cursor: pointer;
   padding-top: 1.875rem;
