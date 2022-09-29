@@ -99,12 +99,12 @@
                 padding-top: 0;
                 border-radius: 10px;
                 position: relative;
-                animation: scrolling 5s linear infinite;
+                // animation: scrolling 5s linear infinite;
 
-                @keyframes scrolling {
-                    100% { transform: translateX(-66.6666%);}
+                // @keyframes scrolling {
+                //     100% { transform: translateX(-66.6666%);}
                     
-                }
+                // }
 
 
                 @include breakpoint-down(medium) {
