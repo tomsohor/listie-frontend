@@ -19,7 +19,7 @@ function ItemDetails() {
 
   if (user)
     return (
-      <div className="additem all_margin">
+      <div className="itemdetails all_margin">
         <div className="content">
           <div className="action">
             <BiArrowBack onClick={toBack} className="backbtn"/>
@@ -31,8 +31,8 @@ function ItemDetails() {
               </label>
             <div className="info">
               <span className="name" >{item.itemname}</span>
-              <span className="name">{item.itemtype}</span>
-              <span className="name">{item.customertype}</span>
+              <span>Customer Type : <span className="type">{item.itemtype}</span></span>
+              <span>Item Type : <span className={"customer " + item.customertype}>{item.customertype}</span></span>
             </div>
           </div>
           <div className="table">

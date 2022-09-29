@@ -1,4 +1,4 @@
-.additem{
+.itemdetails{
     position: relative;
     display: flex;
     justify-content: center;
@@ -36,11 +36,12 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: rem(20);
+            
             .uploadphoto{
                 // min-width: rem(120);
                 height: rem(120);
                 width: rem(160);
-                background-color: gray;
+                // background-color: gray;
                 border-radius: 5px;
                 margin-right: rem(30);
                 & img{
@@ -54,16 +55,54 @@
                 flex-direction: column;
                 justify-content: space-between;
                 width: 100%;
-                
-                & > *{
-                    height: rem(28);
-                    background-color: #373740;
-                    border-radius: 5px;
-                    color: white;
-                    padding-left: rem(10);
+                margin-left: rem(30);
+                // & > *{
+                //     height: rem(28);
+                //     // background-color: #373740;
+                //     border-radius: 5px;
+                //     color: white;
+                //     padding-left: rem(10);
+                // }
+                .name{
+                    font-size: rem(18);
+                    font-weight: bolder;
+                    color: black;
                 }
-                & > :first-child::placeholder{
-                    color: white;}
+                .Retailer .End-consumer {
+                    font-size: rem(13);
+                    font-weight: bold;
+                    
+                    cursor: pointer;
+                    padding: rem(7) rem(18);
+                    
+                }
+                .Retailer{
+                    background-color: #4760B9;
+                    color: white;
+                    padding: rem(7) rem(18);
+                    margin-right: rem(10);
+                    font-weight: bolder;
+                    font-size: rem(10);
+                    border-radius: rem(20);
+                    // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                }
+                .End-consumer{
+                    background-color: #F2D5A3;
+                    font-size: rem(10);
+                    font-weight: bolder;
+                    padding: rem(7) rem(18);
+                    border-radius: rem(20);
+                    // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                }
+                .type{
+                    background-color: #e4b2bb;
+                    font-size: rem(10);
+                    font-weight: bolder;
+                    padding: rem(7) rem(18);
+                    border-radius: rem(20);
+                    // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                }
+
             }
         }
         

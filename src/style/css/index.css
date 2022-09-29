@@ -379,10 +379,10 @@ nav .navbar__logout {
   border-radius: 50%;
   transform: translateY(-0.8125rem);
 }
-.main .itemtype .items .item .tag.retailer {
+.main .itemtype .items .item .tag.Retailer {
   background-color: #4760B9;
 }
-.main .itemtype .items .item .tag.end-consumer {
+.main .itemtype .items .item .tag.End-consumer {
   background-color: #F2D5A3;
 }
 .main .itemtype .items .item .name {
@@ -639,10 +639,14 @@ nav .navbar__logout {
 }
 .additem .content .iteminfo .uploadphoto {
   height: 7.5rem;
-  width: 7.5rem;
+  width: 10rem;
   background-color: gray;
   border-radius: 5px;
   margin-right: 1.875rem;
+}
+.additem .content .iteminfo .uploadphoto img {
+  max-width: 100%;
+  max-height: 100%;
 }
 .additem .content .iteminfo .info {
   position: relative;
@@ -705,6 +709,138 @@ nav .navbar__logout {
   text-align: start;
 }
 .additem .content .table tr > :first-child {
+  text-align: start;
+}
+
+.itemdetails {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 6.25rem;
+  margin-bottom: 6.25rem;
+}
+.itemdetails .content {
+  display: flex;
+  flex-direction: column;
+  width: 37.5rem;
+  height: auto;
+  background-color: white;
+  padding: 1.875rem;
+  border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.itemdetails .content .action {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.875rem;
+}
+.itemdetails .content .action .backbtn {
+  cursor: pointer;
+  color: #5964E0;
+  font-size: larger;
+}
+.itemdetails .content .action .savebtn {
+  cursor: pointer;
+  background-color: #5964E0;
+  padding: 0.3125rem 0.625rem;
+  color: white;
+  border-radius: 5px;
+}
+.itemdetails .content .iteminfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+.itemdetails .content .iteminfo .uploadphoto {
+  height: 7.5rem;
+  width: 10rem;
+  border-radius: 5px;
+  margin-right: 1.875rem;
+}
+.itemdetails .content .iteminfo .uploadphoto img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.itemdetails .content .iteminfo .info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 1.875rem;
+}
+.itemdetails .content .iteminfo .info .name {
+  font-size: 1.125rem;
+  font-weight: bolder;
+  color: black;
+}
+.itemdetails .content .iteminfo .info .Retailer .End-consumer {
+  font-size: 0.8125rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.4375rem 1.125rem;
+}
+.itemdetails .content .iteminfo .info .Retailer {
+  background-color: #4760B9;
+  color: white;
+  padding: 0.4375rem 1.125rem;
+  margin-right: 0.625rem;
+  font-weight: bolder;
+  font-size: 0.625rem;
+  border-radius: 1.25rem;
+}
+.itemdetails .content .iteminfo .info .End-consumer {
+  background-color: #F2D5A3;
+  font-size: 0.625rem;
+  font-weight: bolder;
+  padding: 0.4375rem 1.125rem;
+  border-radius: 1.25rem;
+}
+.itemdetails .content .iteminfo .info .type {
+  background-color: #e4b2bb;
+  font-size: 0.625rem;
+  font-weight: bolder;
+  padding: 0.4375rem 1.125rem;
+  border-radius: 1.25rem;
+}
+.itemdetails .content .table {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.itemdetails .content .table .header {
+  display: flex;
+  justify-content: space-between;
+}
+.itemdetails .content .table .header .addbtn {
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+.itemdetails .content .table table {
+  border-spacing: 0 10px;
+}
+.itemdetails .content .table td:not(:last-child) > * {
+  width: 10rem;
+  background-color: #373740;
+  border-radius: 5px;
+  color: white;
+  padding: 0.125rem 0.625rem;
+  text-align: center;
+}
+.itemdetails .content .table td:last-child > * {
+  cursor: pointer;
+  font-size: 1.25rem;
+  margin-left: 1.25rem;
+  padding-top: 0.125rem;
+  color: rgb(230, 134, 134);
+}
+.itemdetails .content .table tr > :nth-child(3) {
+  text-align: end;
+}
+.itemdetails .content .table tr > :nth-child(3) > * {
+  text-align: start;
+}
+.itemdetails .content .table tr > :first-child {
   text-align: start;
 }
 

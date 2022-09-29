@@ -81,7 +81,7 @@ function AddItem() {
           <div className="iteminfo">
             
               <label className="uploadphoto">
-                {image && <img src={image} style={{ maxWidth: '100%'}} />}
+                {image && <img src={image} />}
                 <input
                   style={{ display: "none" }}
                   type="file"
