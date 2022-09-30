@@ -153,6 +153,7 @@ function Home() {
                       </div>
                     </div>
                   ))}
+                  
                 </div>
                 {/* <div className="paging">
                         <span className="pre"><GrPrevious/></span>

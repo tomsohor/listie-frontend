@@ -364,6 +364,18 @@ nav .navbar__logout {
   padding-top: 0;
   border-radius: 10px;
   position: relative;
+  -webkit-animation: scrolling 5s linear infinite;
+          animation: scrolling 5s linear infinite;
+}
+@-webkit-keyframes scrolling {
+  100% {
+    transform: translateX(-66.6666%);
+  }
+}
+@keyframes scrolling {
+  100% {
+    transform: translateX(-66.6666%);
+  }
 }
 @media (max-width: 63.9375em) {
   .main .itemtype .items .item {
@@ -417,7 +429,7 @@ nav .navbar__logout {
   left: 1.5625rem;
 }
 .main .itemtype .items .item .img {
-  width: 100%;
+  max-width: 7.5rem;
   height: 8.125rem;
   margin-bottom: 0.625rem;
 }
