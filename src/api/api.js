@@ -41,7 +41,7 @@ const api = {
   async addItem(item, file) {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("prices", item.prices)
+    formData.append("prices",  JSON.stringify(item.prices))
     formData.append("itemname", item.itemname)
     formData.append("itemtype", item.itemtype)
     formData.append("customertype", item.customertype)
@@ -68,6 +68,7 @@ const api = {
     const headers = {
       "content-type": "multipart/form-data",
     };
+    console.log(JSON.stringify(item.prices))
     return await instance({
       url: "/item",
       method: "Patch",

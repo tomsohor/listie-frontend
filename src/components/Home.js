@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 import Search from "./sub/Search";
 import api from "../api/api";
 
@@ -39,7 +40,7 @@ function Home() {
       await getAllData();
     } else {
       setFilterType(type);
-      console.log(type)
+
       const filtered = {};
       Object.keys(k).forEach((x) => {
         filtered[x] = k[x].filter((y) => y.customertype === type);
@@ -72,6 +73,7 @@ function Home() {
 
   useEffect(() => {
     getAllData();
+
   }, []);
   if (data) {
     return (
@@ -108,17 +110,21 @@ function Home() {
           <div className="main">
             <div className="gt">
               <h2>Grand Total</h2>
-              {data.length == 1 && <p>{data.length} item</p>} 
+              {data.length == 1 && <p>{data.length} item</p>}
               {data.length > 1 && <p>{data.length} items</p>}
             </div>
-
+          
             {Object.keys(k).map((itemtype) => (
               <div className="itemtype">
                 <div className="typename">
                   <div className="name">
                     <h3>{itemtype}</h3>
-                    {k[itemtype].length == 1 && <p>{k[itemtype].length} item</p>} 
-                    {k[itemtype].length > 1 && <p>{k[itemtype].length} items</p>} 
+                    {k[itemtype].length == 1 && (
+                      <p>{k[itemtype].length} item</p>
+                    )}
+                    {k[itemtype].length > 1 && (
+                      <p>{k[itemtype].length} items</p>
+                    )}
                   </div>
                   <MdOutlineOtherHouses className="more" />
                 </div>
