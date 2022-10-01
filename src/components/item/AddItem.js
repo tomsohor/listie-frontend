@@ -1,5 +1,5 @@
 import React from "react";
-import { BiArrowBack } from "react-icons/bi";
+import { BiArrowBack, BiCloudUpload } from "react-icons/bi";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { AiFillPlusCircle, AiFillCloseCircle } from "react-icons/ai";
 import { useState } from "react";
@@ -83,10 +83,11 @@ function AddItem() {
               <label className="uploadphoto">
                 {image && <img src={image} />}
                 <input
-                  style={{ display: "none" }}
+                  style={{ visibility: "hidden" }}
                   type="file"
                   onChange={changeHandler}
                 ></input>
+                <BiCloudUpload className="upload"/>
               </label>
             <div className="info">
               <input
@@ -105,7 +106,7 @@ function AddItem() {
                 <option value="" disabled selected hidden>
                   Item Type
                 </option>
-                <option value="Drink / Baverage">Drink / Baverage</option>
+                <option value="Drink / Beverage">Drink / Beverage</option>
                 <option value="Snack">Snack</option>
                 <option value="Body / Facial Care">Body / Facial Care</option>
                 <option value="Ingredient">Ingredient</option>

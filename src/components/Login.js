@@ -25,7 +25,7 @@ function Login() {
   };
   return (
     <div className="login">
-      <h2>“ Listie, Your bestie to Reminisce your Products pricing! “ </h2>
+      <h2>“ Listie, Your Bestie To Reminisce Your Products Pricing! “ </h2>
       <form className="form">
         <input
           type="text"
@@ -41,7 +41,7 @@ function Login() {
         />
         <div className="action">
           <p>
-            Don’t have Account? <span onClick={toSignUp}> Create</span>
+            Don’t have account? <span onClick={toSignUp}> Create</span>
           </p>
           <button className="loginbtn" onClick={onLogin}>
             Login
