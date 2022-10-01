@@ -31,8 +31,8 @@ function ItemDetails() {
               </label>
             <div className="info">
               <span className="name" >{item.itemname}</span>
-              <span>Customer Type : <span className="type">{item.itemtype}</span></span>
-              <span>Item Type : <span className={"customer " + item.customertype}>{item.customertype}</span></span>
+              <span>Item Type : <span className="type">{item.itemtype}</span></span>
+              <span>Customer Type : <span className={"customer " + item.customertype}>{item.customertype}</span></span>
             </div>
           </div>
           <div className="table">

@@ -41,6 +41,9 @@ const api = {
   async addItem(item, file) {
     const formData = new FormData();
     formData.append("file", file);
+    if (!file){
+      formData.append('pic',item.pic)
+    }
     formData.append("prices",  JSON.stringify(item.prices))
     formData.append("itemname", item.itemname)
     formData.append("itemtype", item.itemtype)
@@ -78,7 +81,6 @@ const api = {
   },
 
   async deleteItem(id) {
-    console.log("111111", id);
     return await instance({
       url: "/item",
       method: "Delete",

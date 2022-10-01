@@ -20,8 +20,14 @@ function Home() {
     navigate("/item/delete", { state: { id } });
   };
 
-  const toDuplicate = (item) => {
-    navigate("/item/duplicate", { state: { item } });
+  const toDuplicate = async(id) => {
+    await api.getItemDetails(id).then((res) => {
+      if (res.status === 200) {
+        const item = res.data.item;
+        item.prices = res.data.prices;
+        navigate("/item/duplicate", { state: { item } });
+      }
+    });
   };
 
   const getDetails = async (id) => {
@@ -110,7 +116,7 @@ function Home() {
           <div className="main">
             <div className="gt">
               <h2>Grand Total</h2>
-              {data.length == 1 && <p>{data.length} item</p>}
+              {data.length === 1 && <p>{data.length} item</p>}
               {data.length > 1 && <p>{data.length} items</p>}
             </div>
           
@@ -119,7 +125,7 @@ function Home() {
                 <div className="typename">
                   <div className="name">
                     <h3>{itemtype}</h3>
-                    {k[itemtype].length == 1 && (
+                    {k[itemtype].length === 1 && (
                       <p>{k[itemtype].length} item</p>
                     )}
                     {k[itemtype].length > 1 && (
@@ -148,7 +154,7 @@ function Home() {
                       </div>
 
                       <div className="action">
-                        <IoDuplicateOutline onClick={() => toDuplicate(item)} />
+                        <IoDuplicateOutline onClick={() => toDuplicate(item.id)} />
                         <RiDeleteBin6Line onClick={() => toDelete(item.id)} />
                       </div>
                     </div>

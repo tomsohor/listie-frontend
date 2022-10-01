@@ -13,6 +13,7 @@ function DupItem() {
  
   const onDuplicate = async(item) =>{
     item.itemname = item.itemname + ' Copy'
+    console.log(item)
     await api.addItem(item).then(res=>{
       if(res.status === 200){
         navigate('/')
