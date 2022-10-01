@@ -37,7 +37,12 @@
             justify-content: space-between;
             margin-bottom: rem(20);
             .uploadphoto{
+                cursor: pointer;
                 // min-width: rem(120);
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
                 height: rem(120);
                 width: rem(160);
                 background-color: gray;
@@ -46,6 +51,11 @@
                 & img{
                     max-width: 100%;
                     max-height: 100%;
+                }
+                .upload{
+                    // color: red;
+                    font-size: rem(30);
+
                 }
             }
             .info{

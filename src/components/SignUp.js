@@ -25,12 +25,12 @@ function SignUp() {
   };
   return (
     <div className="signup">
-      <h2>“ Listie, Your bestie to Reminisce your Products pricing! “ </h2>
+      <h2>“ Listie, Your Bestie To Reminisce Your Products Pricing! “ </h2>
       <form className="form">
         <input
           type="text"
           className="email"
-          placeholder="email"
+          placeholder="Email"
           onChange={(event) => setEmail(event.target.value)}
         />
         <input
@@ -47,7 +47,7 @@ function SignUp() {
         />
         <div className="action">
           <p>
-            Already have Account? <span onClick={toLogin}>login</span>{" "}
+            Already have account? <span onClick={toLogin}>Login</span>{" "}
           </p>
           <button className="signupbtn" onClick={onSignUp}>
             Sign Up
